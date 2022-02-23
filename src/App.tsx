@@ -1,6 +1,9 @@
+import React from 'react';
 import { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button } from "@mui/material";
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 
 
@@ -10,9 +13,8 @@ const useStyles = makeStyles({
     margin: '50px auto',
     textAlign: 'center'
   },
-  h1: {
-    color: 'burlywood',
-    fontSize: '3rem',
+  title: {
+    color: 'burlywood'
   },
   board: {
     maxWidth: '450px',
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'wrap',
   },
-  square: {
+  cell: {
     width: '150px',
     height: '150px',
     border: '2px solid burlywood',
@@ -29,33 +31,40 @@ const useStyles = makeStyles({
 });
 
 const App = () => {
-  const [boardTable, setBoardTable] = useState(Array(9).fill(null));
+  const [board, setBoard] = useState(Array(9).fill(null));
   const [turn, setTurn] = useState(false);
 
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
-      <h1 className={classes.h1}>Tic Tac Toe with Typescript</h1>
-      <Box mt={2}>
-        <Button
-          variant="outlined"
-          size="medium">
-          Reset
-        </Button>
-      </Box>
-      <div className={classes.board}>
-        {
-          boardTable.map((board, index) => (
-            <div
-              className={classes.square}
-              key={index}>
-              {board}
-            </div>
-          ))
-        }
-      </div>
-    </div>
+    <>
+      <Container className={classes.container}>
+        <Typography
+          variant="h3"
+          component="div"
+          className={classes.title}>
+          Tic Tac Toe with Typescript
+        </Typography>
+        <Box mt={2}>
+          <Button
+            variant="outlined"
+            size="medium">
+            Reset
+          </Button>
+        </Box>
+        <div className={classes.board}>
+          {
+            board.map((cell, index) => (
+              <div
+                className={classes.cell}
+                key={index}>
+                {cell}
+              </div>
+            ))
+          }
+        </div>
+      </Container>
+    </>
   );
 };
 
