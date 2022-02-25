@@ -2,10 +2,35 @@ import React from 'react';
 import { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button } from "@mui/material";
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 
+
+declare module '@mui/material/styles' {
+  interface Theme {
+    status: {
+      secondary: string;
+    };
+  }
+  interface ThemeOptions {
+    status?: {
+      secondary?: string;
+    };
+  }
+}
+
+const theme = createTheme({
+  status: {
+    secondary: 'burlywood',
+  },
+});
+
+const CustomButton = styled(Button)(({ theme }) => ({
+  color: theme.status.secondary,
+  borderColor: theme.status.secondary
+}));
 
 const useStyles = makeStyles({
   container: {
@@ -46,11 +71,13 @@ const App = () => {
           Tic Tac Toe with Typescript
         </Typography>
         <Box mt={2}>
-          <Button
-            variant="outlined"
-            size="medium">
-            Reset
-          </Button>
+          <ThemeProvider theme={theme}>
+            <CustomButton
+              variant="outlined"
+              size="medium">
+              Reset
+            </CustomButton>
+          </ThemeProvider>
         </Box>
         <div className={classes.board}>
           {
