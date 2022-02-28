@@ -1,11 +1,13 @@
-import React from 'react';
 import { useState } from "react";
+
 import { makeStyles } from "@mui/styles";
 import { Button } from "@mui/material";
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
+
+import { Cell } from './components/Cell';
 
 
 declare module '@mui/material/styles' {
@@ -62,36 +64,35 @@ const App = () => {
   const classes = useStyles();
 
   return (
-    <>
-      <Container className={classes.container}>
-        <Typography
-          variant="h3"
-          component="div"
-          className={classes.title}>
-          Tic Tac Toe with Typescript
-        </Typography>
-        <Box mt={2}>
-          <ThemeProvider theme={theme}>
-            <CustomButton
-              variant="outlined"
-              size="medium">
-              Reset
-            </CustomButton>
-          </ThemeProvider>
-        </Box>
-        <div className={classes.board}>
-          {
-            board.map((cell, index) => (
-              <div
-                className={classes.cell}
-                key={index}>
-                {cell}
-              </div>
-            ))
-          }
-        </div>
-      </Container>
-    </>
+    <Container className={classes.container}>
+      <Typography
+        variant="h3"
+        component="div"
+        className={classes.title}>
+        Tic Tac Toe with Typescript
+      </Typography>
+      <Box mt={2}>
+        <ThemeProvider theme={theme}>
+          <CustomButton
+            variant="outlined"
+            size="medium">
+            Reset
+          </CustomButton>
+        </ThemeProvider>
+      </Box>
+      <div className={classes.board}>
+        {
+          board.map((cell, index) => (
+            <Cell key={index} value={cell} classes={classes} />
+            // <div
+            //   className={classes.cell}
+            //   key={index}>
+            //   {cell}
+            // </div>
+          ))
+        }
+      </div>
+    </Container>
   );
 };
 
