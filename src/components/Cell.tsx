@@ -1,10 +1,16 @@
 import React from 'react';
 
+interface CellContent {
+    classes: {
+        cell: string
+    },
+    letter: null
+}
 
-export const Cell: React.FC<any> = ({ cell, classes }) => {
+export const Cell: React.FC<CellContent> = ({ letter, classes }) => {
     return (
         <div className={classes.cell}>
-            {cell}
+            {letter}
         </div>
     )
 }

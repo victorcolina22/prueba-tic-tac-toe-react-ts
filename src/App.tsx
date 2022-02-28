@@ -1,38 +1,15 @@
 import { useState } from "react";
 
 import { makeStyles } from "@mui/styles";
-import { Button } from "@mui/material";
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 
 import { Cell } from './components/Cell';
+import { theme } from "./helpers/challengeTheme";
+import { CustomButton } from "./components/CustomButton";
 
-
-declare module '@mui/material/styles' {
-  interface Theme {
-    status: {
-      secondary: string;
-    };
-  }
-  interface ThemeOptions {
-    status?: {
-      secondary?: string;
-    };
-  }
-}
-
-const theme = createTheme({
-  status: {
-    secondary: 'burlywood',
-  },
-});
-
-const CustomButton = styled(Button)(({ theme }) => ({
-  color: theme.status.secondary,
-  borderColor: theme.status.secondary
-}));
 
 const useStyles = makeStyles({
   container: {
@@ -53,9 +30,13 @@ const useStyles = makeStyles({
     width: '150px',
     height: '150px',
     border: '2px solid burlywood',
-    cursor: 'pointer'
-  },
+    cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
+
 
 const App = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -82,13 +63,11 @@ const App = () => {
       </Box>
       <div className={classes.board}>
         {
-          board.map((cell, index) => (
-            <Cell key={index} value={cell} classes={classes} />
-            // <div
-            //   className={classes.cell}
-            //   key={index}>
-            //   {cell}
-            // </div>
+          board.map((letter, index) => (
+            <Cell
+              key={index}
+              letter={letter}
+              classes={classes} />
           ))
         }
       </div>
