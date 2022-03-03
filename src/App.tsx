@@ -8,7 +8,7 @@ import { Box } from "@mui/system";
 
 import { Cell } from './components/Cell';
 import { theme } from "./helpers/challengeTheme";
-import { CustomButton } from "./components/CustomButton";
+import { CustomButton } from "./ui/CustomButton";
 
 
 const useStyles = makeStyles({

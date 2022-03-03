@@ -14,7 +14,3 @@ test('Render button', () => {
   const button = document.querySelector("button");
   expect(button).toBeInTheDocument();
 });
-
-// test('Render cells', () => {
-//   const component = render(<App />);
-// });

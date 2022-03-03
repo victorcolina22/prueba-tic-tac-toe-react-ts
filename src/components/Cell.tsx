@@ -1,13 +1,16 @@
 import React from 'react';
 
-interface CellContent {
+interface CellProps {
     classes: {
         cell: string
     },
     letter: null
 }
 
-export const Cell: React.FC<CellContent> = ({ letter, classes }) => {
+export const Cell: React.FC<CellProps> = (props: CellProps) => {
+
+    const { letter, classes } = props;
+
     return (
         <div className={classes.cell}>
             {letter}
