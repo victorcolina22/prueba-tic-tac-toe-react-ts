@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface CellProps {
+type CellProps = {
     classes: {
         cell: string
     },
