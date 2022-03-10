@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     textAlign: 'center'
   },
   title: {
-    color: 'burlywood'
+    color: theme.status.secondary
   },
   board: {
     maxWidth: '450px',
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   cell: {
     width: '150px',
     height: '150px',
-    border: '2px solid burlywood',
+    border: `2px solid ${theme.status.secondary}`,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
@@ -63,11 +63,12 @@ const App = () => {
       </Box>
       <div className={classes.board}>
         {
-          board.map((letter, index) => (
+          board.map((value, index) => (
             <Cell
               key={index}
-              letter={letter}
-              classes={classes} />
+              value={value}
+              classes={classes}
+            />
           ))
         }
       </div>

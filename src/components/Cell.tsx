@@ -1,19 +1,17 @@
 import React from 'react';
 
+
 type CellProps = {
     classes: {
-        cell: string
+        cell: string;
     },
-    letter: null
+    value: string;
 }
-
 export const Cell: React.FC<CellProps> = (props: CellProps) => {
-
-    const { letter, classes } = props;
-
+    const { value, classes } = props;
     return (
         <div className={classes.cell}>
-            {letter}
+            {value}
         </div>
     )
 }
