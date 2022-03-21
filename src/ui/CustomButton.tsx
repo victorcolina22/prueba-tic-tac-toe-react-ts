@@ -3,6 +3,6 @@ import { Button } from "@mui/material";
 
 
 export const CustomButton = styled(Button)(({ theme }) => ({
-    color: theme.status.secondary,
-    borderColor: theme.status.secondary
+    color: theme.status.color,
+    borderColor: theme.status.color
 }));

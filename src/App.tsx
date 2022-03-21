@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     textAlign: 'center'
   },
   title: {
-    color: theme.status.secondary
+    color: theme.status.color
   },
   board: {
     maxWidth: '450px',
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   cell: {
     width: '150px',
     height: '150px',
-    border: `2px solid ${theme.status.secondary}`,
+    border: `2px solid ${theme.status.color}`,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
@@ -37,10 +37,10 @@ const useStyles = makeStyles({
   },
   player: {
     fontSize: '3rem',
-    color: theme.status.secondary
+    color: theme.status.color
   },
   'mt-3': {
-    color: theme.status.secondary,
+    color: theme.status.color,
     fontSize: '1.5rem',
     marginTop: '15px'
   }
@@ -56,11 +56,11 @@ const App = () => {
   let player: string = !turn ? 'X' : 'O';
 
   const handleCellValue = (idx: number): void => {
-    let cell = [...board];
-    if (cell[idx] !== null) return;
+    const boardBuffer = [...board];
+    if (boardBuffer[idx] !== null) return;
     setTurn(!turn);
-    cell[idx] = player;
-    setBoard(cell);
+    boardBuffer[idx] = player;
+    setBoard(boardBuffer);
   }
 
   return (
