@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     fontSize: '3rem',
     color: theme.status.color
   },
-  'mt-3': {
+  nextPlayerTitle: {
     color: theme.status.color,
     fontSize: '1.5rem',
     marginTop: '15px'
@@ -80,7 +80,7 @@ const App = () => {
           </CustomButton>
         </ThemeProvider>
       </Box>
-      <p className={classes['mt-3']}>
+      <p className={classes.nextPlayerTitle}>
         Next player: {player}
       </p>
       <div className={classes.board}>
