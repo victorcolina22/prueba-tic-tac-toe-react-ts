@@ -3,18 +3,18 @@ import { createTheme } from "@mui/material/styles";
 declare module '@mui/material/styles' {
     interface Theme {
         status: {
-            secondary: string;
+            color: string;
         };
     }
     interface ThemeOptions {
         status?: {
-            secondary?: string;
+            color?: string;
         };
     }
 }
 
 export const theme = createTheme({
     status: {
-        secondary: 'burlywood',
+        color: 'burlywood',
     },
 });

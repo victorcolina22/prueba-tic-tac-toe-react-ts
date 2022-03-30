@@ -18,22 +18,31 @@ const useStyles = makeStyles({
     textAlign: 'center'
   },
   title: {
-    color: theme.status.secondary
+    color: theme.status.color
   },
   board: {
     maxWidth: '450px',
-    margin: '25px auto',
+    margin: '15px auto',
     display: 'flex',
     flexWrap: 'wrap',
   },
   cell: {
     width: '150px',
     height: '150px',
-    border: `2px solid ${theme.status.secondary}`,
+    border: `2px solid ${theme.status.color}`,
     cursor: 'pointer',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  player: {
+    fontSize: '3rem',
+    color: theme.status.color
+  },
+  nextPlayerTitle: {
+    color: theme.status.color,
+    fontSize: '1.5rem',
+    marginTop: '15px'
   }
 });
 
@@ -43,6 +52,16 @@ const App = () => {
   const [turn, setTurn] = useState(false);
 
   const classes = useStyles();
+
+  let player: string = !turn ? 'X' : 'O';
+
+  const handleCellValue = (idx: number): void => {
+    const boardBuffer = [...board];
+    if (boardBuffer[idx] !== null) return;
+    setTurn(!turn);
+    boardBuffer[idx] = player;
+    setBoard(boardBuffer);
+  }
 
   return (
     <Container className={classes.container}>
@@ -61,6 +80,9 @@ const App = () => {
           </CustomButton>
         </ThemeProvider>
       </Box>
+      <p className={classes.nextPlayerTitle}>
+        Next player: {player}
+      </p>
       <div className={classes.board}>
         {
           board.map((value, index) => (
@@ -68,6 +90,8 @@ const App = () => {
               key={index}
               value={value}
               classes={classes}
+              idx={index}
+              handleCellvalue={handleCellValue}
             />
           ))
         }
