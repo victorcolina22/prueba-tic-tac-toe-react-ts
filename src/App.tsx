@@ -57,11 +57,20 @@ const App = () => {
 
   const handleCellValue = (idx: number): void => {
     const boardBuffer = [...board];
+
     if (boardBuffer[idx] !== null) return;
+
     setTurn(!turn);
+
     boardBuffer[idx] = player;
+
     setBoard(boardBuffer);
-  }
+  };
+
+  const resetGame = (): void => {
+    setBoard(Array(9).fill(null));
+    setTurn(false);
+  };
 
   return (
     <Container className={classes.container}>
@@ -75,7 +84,8 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <CustomButton
             variant="outlined"
-            size="medium">
+            size="medium"
+            onClick={resetGame}>
             Reset
           </CustomButton>
         </ThemeProvider>
