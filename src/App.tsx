@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 
 import { Cell } from './components/Cell';
+import { Reset } from './components/ResetGame';
 import { theme } from "./helpers/challengeTheme";
 import { CustomButton } from "./ui/CustomButton";
 
@@ -46,7 +47,6 @@ const useStyles = makeStyles({
   }
 });
 
-
 const App = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [turn, setTurn] = useState(false);
@@ -57,11 +57,20 @@ const App = () => {
 
   const handleCellValue = (idx: number): void => {
     const boardBuffer = [...board];
+
     if (boardBuffer[idx] !== null) return;
+
     setTurn(!turn);
+
     boardBuffer[idx] = player;
+
     setBoard(boardBuffer);
-  }
+  };
+
+  const resetGame = (): void => {
+    setBoard(Array(9).fill(null));
+    setTurn(false);
+  };
 
   return (
     <Container className={classes.container}>
@@ -76,7 +85,7 @@ const App = () => {
           <CustomButton
             variant="outlined"
             size="medium">
-            Reset
+            <Reset resetGame={resetGame} />
           </CustomButton>
         </ThemeProvider>
       </Box>

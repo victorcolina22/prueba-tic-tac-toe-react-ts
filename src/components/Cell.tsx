@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 type CellProps = {
     classes: {
         cell: string;
@@ -10,8 +9,8 @@ type CellProps = {
     idx: number;
     handleCellvalue(param: number): any;
 }
-export const Cell: React.FC<CellProps> = (props: CellProps) => {
-    const { value, classes, idx, handleCellvalue } = props;
+
+export const Cell: React.FC<CellProps> = ({ value, classes, idx, handleCellvalue }: CellProps) => {
     return (
         <div
             className={classes.cell}
@@ -21,4 +20,4 @@ export const Cell: React.FC<CellProps> = (props: CellProps) => {
             </p>
         </div>
     )
-}
+};
